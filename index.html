@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hardware Idle</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- TOPBAR -->
+
+  <header class="top-bar">
+
+    <div>
+      <h1>⚡ Hardware Idle</h1>
+      <p>Cyberpunk Hardware Loot RPG</p>
+    </div>
+
+    <div class="resource-box">
+      <span>Bits</span>
+      <strong id="bitsValue">0</strong>
+    </div>
+
+  </header>
+
+  <!-- MAIN -->
+
+  <main class="main-panel">
+
+    <!-- STATUS -->
+
+    <section class="stats-panel">
+
+      <div class="stat-card">
+        <span>CPU</span>
+        <strong id="cpuPower">1</strong>
+      </div>
+
+      <div class="stat-card">
+        <span>GPU</span>
+        <strong id="gpuPower">1</strong>
+      </div>
+
+      <div class="stat-card">
+        <span>RAM</span>
+        <strong id="ramPower">1</strong>
+      </div>
+
+      <div class="stat-card">
+        <span>Cooling</span>
+        <strong id="coolingPower">1</strong>
+      </div>
+
+      <div class="stat-card heat">
+        <span>Temperatura</span>
+        <strong id="heatValue">0°C</strong>
+      </div>
+
+    </section>
+
+    <!-- TABS -->
+
+    <nav class="tab-menu">
+
+      <button class="tab-btn active" data-tab="hacker">
+        Hacker
+      </button>
+
+      <button class="tab-btn" data-tab="inventory">
+        Inventário
+      </button>
+
+      <button class="tab-btn" data-tab="setup">
+        Setup
+      </button>
+
+      <button class="tab-btn" data-tab="attributes">
+        Atributos
+      </button>
+
+      <button class="tab-btn" data-tab="upgrades">
+        Upgrades
+      </button>
+
+    </nav>
+
+    <!-- HACKER -->
+
+    <section class="tab-content active" id="tab-hacker">
+
+      <div class="panel-card hacker-card">
+
+        <div class="hacker-stage">
+
+          <div class="stage-bg-grid"></div>
+          <div class="stage-scanline"></div>
+
+          <!-- HEADER -->
+
+          <div class="stage-header">
+
+            <div>
+              <h2 id="hackName">Wi-Fi Público</h2>
+
+              <p id="hackDescription">
+                Rede vulnerável encontrada.
+              </p>
+            </div>
+
+            <div class="target-level">
+              <span>Alvo</span>
+              <strong id="targetLevel">
+                Nível 1
+              </strong>
+            </div>
+
+          </div>
+
+          <!-- BATTLE -->
+
+          <div class="battle-area">
+
+            <!-- PLAYER -->
+
+            <div class="player-rig">
+
+              <div class="pc-tower">
+
+                <div class="pc-light"></div>
+
+                <div class="pc-fan"></div>
+                <div class="pc-fan small"></div>
+
+              </div>
+
+              <div class="rig-label">
+
+                <strong>
+                  Seu Setup
+                </strong>
+
+                <span id="setupPowerText">
+                  Power 0
+                </span>
+
+              </div>
+
+            </div>
+
+            <!-- DATA -->
+
+            <div class="data-stream" id="dataStream">
+
+              <span></span>
+              <span></span>
+              <span></span>
+
+            </div>
+
+            <!-- SERVER -->
+
+            <div class="enemy-server">
+
+              <div class="server-rack">
+
+                <div></div>
+                <div></div>
+                <div></div>
+
+              </div>
+
+              <div class="rig-label">
+
+                <strong>
+                  Rede Alvo
+                </strong>
+
+                <span>
+                  Vulnerável
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- PROGRESS -->
+
+          <div class="progress-area">
+
+            <div class="progress-info">
+
+              <span>
+                Hack Progress
+              </span>
+
+              <strong id="hackProgressText">
+                0%
+              </strong>
+
+            </div>
+
+            <div class="progress-bar">
+
+              <div id="hackProgressBar"></div>
+
+            </div>
+
+          </div>
+
+          <!-- BUTTONS -->
+
+          <div class="button-row">
+
+            <button id="hackBtn" class="primary-btn">
+              Hackear
+            </button>
+
+            <button id="mineBtn" class="secondary-btn">
+              Minerar Bits
+            </button>
+
+          </div>
+
+        </div>
+
+        <!-- LOG -->
+
+        <div class="log-box" id="gameLog">
+
+          <div class="log-message">
+            Sistema iniciado.
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- INVENTORY -->
+
+    <section class="tab-content" id="tab-inventory">
+
+      <div class="panel-card">
+
+        <div class="section-header">
+
+          <h2>Inventário</h2>
+
+          <span id="inventorySlots">
+            0/20
+          </span>
+
+        </div>
+
+        <div class="inventory-grid" id="inventoryList">
+
+          <!-- ITEMS -->
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- SETUP -->
+
+    <section class="tab-content" id="tab-setup">
+
+      <div class="panel-card gamer-room-card">
+
+        <div class="gamer-room">
+
+          <div class="room-wall"></div>
+          <div class="room-floor"></div>
+
+          <div class="rgb-light left"></div>
+          <div class="rgb-light right"></div>
+
+          <!-- MONITORS -->
+
+          <div class="monitor-setup">
+
+            <div class="monitor main-monitor">
+              <div class="screen-glow"></div>
+            </div>
+
+            <div class="monitor side-monitor"></div>
+
+          </div>
+
+          <!-- DESK -->
+
+          <div class="desk"></div>
+
+          <!-- PC -->
+
+          <div class="room-pc">
+
+            <div class="pc-case">
+
+              <div class="case-light"></div>
+
+              <div class="case-fan top"></div>
+              <div class="case-fan middle"></div>
+              <div class="case-fan bottom"></div>
+
+            </div>
+
+          </div>
+
+          <!-- EQUIPPED -->
+
+          <div class="equipped-components">
+
+            <div class="component-card">
+              <span>CPU</span>
+              <strong id="slotCPU">
+                Vazio
+              </strong>
+            </div>
+
+            <div class="component-card">
+              <span>GPU</span>
+              <strong id="slotGPU">
+                Vazio
+              </strong>
+            </div>
+
+            <div class="component-card">
+              <span>RAM</span>
+              <strong id="slotRAM1">
+                Vazio
+              </strong>
+            </div>
+
+            <div class="component-card">
+              <span>Cooler</span>
+              <strong id="slotCooler">
+                Vazio
+              </strong>
+            </div>
+
+            <div class="component-card">
+              <span>SSD</span>
+              <strong id="slotSSD">
+                Vazio
+              </strong>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ATTRIBUTES -->
+
+    <section class="tab-content" id="tab-attributes">
+
+      <div class="panel-card">
+
+        <div class="section-header">
+
+          <div>
+
+            <h2>
+              Atributos
+            </h2>
+
+            <p>
+              Evolua seu computador.
+            </p>
+
+          </div>
+
+          <span id="attributeCost">
+            Custo: 50 Bits
+          </span>
+
+        </div>
+
+        <div class="attribute-level-box">
+
+          <span>Nível</span>
+
+          <strong id="attributeRollLevel">
+            1
+          </strong>
+
+        </div>
+
+        <div class="attributes-list" id="attributesList">
+
+        </div>
+
+        <div class="roll-area">
+
+          <button id="rollAttributeBtn" class="primary-btn">
+            Sortear Atributo
+          </button>
+
+          <div id="attributeOffer" class="attribute-offer hidden">
+
+            <h3>
+              Novo atributo encontrado
+            </h3>
+
+            <p id="newAttributeText"></p>
+
+            <div class="button-row">
+
+              <button id="applyAttributeBtn" class="primary-btn">
+                Aplicar
+              </button>
+
+              <button id="keepAttributeBtn" class="secondary-btn">
+                Ignorar
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- UPGRADES -->
+
+    <section class="tab-content" id="tab-upgrades">
+
+      <div class="panel-card">
+
+        <h2>Upgrades</h2>
+
+        <p>
+          Melhorias permanentes do setup.
+        </p>
+
+        <div class="upgrade-list">
+
+          <button class="upgrade-btn" id="upgradeCpuBtn">
+
+            Melhorar CPU
+
+            <span>
+              Bits
+            </span>
+
+          </button>
+
+          <button class="upgrade-btn" id="upgradeGpuBtn">
+
+            Melhorar GPU
+
+            <span>
+              Bits
+            </span>
+
+          </button>
+
+          <button class="upgrade-btn" id="upgradeCoolingBtn">
+
+            Melhorar Cooling
+
+            <span>
+              Bits
+            </span>
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+<!-- MODAL -->
+
+<div id="dropModal" class="modal hidden">
+
+  <div class="modal-card">
+
+    <h2>
+      Novo Drop
+    </h2>
+
+    <div id="dropComparison"></div>
+
+    <div class="button-row">
+
+      <button id="equipDropBtn" class="primary-btn">
+        Equipar
+      </button>
+
+      <button id="keepDropBtn" class="secondary-btn">
+        Guardar
+      </button>
+
+      <button id="scrapDropBtn" class="danger-btn">
+        Desmontar
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
